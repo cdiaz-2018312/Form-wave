@@ -1,0 +1,102 @@
+*{
+    box-sizing: border-box;
+}
+:root {
+    --izquierda-bg-color: rgba(87,84,236,0.7);
+    --derecha-bg-color: rgba(155, 155, 155, 0.8);
+    --hover-width:75%;
+    --other-width: 25%;
+    --speed: 1000ms;
+}
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    color: gold;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.split {
+    position: absolute;
+    width: 50%;
+    height:100%;
+    overflow:hidden
+}
+
+.split.izquierda {
+    left: 0;
+    background: url('./images/chica.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.izquierda::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--izquierda-bg-color);
+}
+
+.split.derecha {
+    right: 0;
+    background:url('./images/freddy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+}
+
+.split.derecha::before {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: var(--derecha-bg-color);
+}
+
+.split.izquierda,
+.split.derecha,
+.split.izquierda::before,
+.split.derecha::before {
+    transition: all var(--speed) ease-in-out;
+}
+
+.hover-izquierda .izquierda {
+    width: var(--hover-width);
+}
+
+.hover-izquierda .derecha {
+    width: var(--other-width);
+}
+
+.hover-derecha .derecha {
+    width: var(--hover-width);
+}
+
+.hover-derecha .izquierda {
+    width: var(--other-width);
+}
+@media (max-width: 800px){
+    h1 {
+        font-size: 2rem;
+        top: 30%;
+    }
+
+
+}
